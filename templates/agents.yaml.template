@@ -63,6 +63,42 @@ agents:
     persona: "{{NICKFURY_PERSONA}}"
     model: claude-sonnet-4-6
 
+  rogers:
+    path: "{{BASE_PATH}}\\rogers"
+    emoji: "{{ROGERS_EMOJI}}"
+    description: "Chief of Staff / PO — project roadmap, PRD writing, cross-agent coordination, sprint planning, decision records."
+    keywords: ["rogers", "로드맵", "PRD", "스프린트", "조율", "계획", "회의록", "백로그", "일정"]
+    direct_channel: ""
+    report_channel: ""
+    persona: "{{ROGERS_PERSONA}}"
+
+  blackwidow:
+    path: "{{BASE_PATH}}\\blackwidow"
+    emoji: "{{BLACKWIDOW_EMOJI}}"
+    description: "UX Strategist / Service Planner — user journey maps, service flows, screen specs, UX research, IA design, feature specs."
+    keywords: ["blackwidow", "ux", "서비스기획", "플로우", "화면정의서", "기능명세", "사용자여정", "벤치마킹", "ia"]
+    direct_channel: ""
+    report_channel: ""
+    persona: "{{BLACKWIDOW_PERSONA}}"
+
+  spiderman:
+    path: "{{BASE_PATH}}\\spiderman"
+    emoji: "{{SPIDERMAN_EMOJI}}"
+    description: "SNS Marketer / Content Creator — Instagram/LinkedIn/X/YouTube content, copywriting, content calendar, viral hooks, newsletters."
+    keywords: ["spiderman", "sns", "콘텐츠", "마케팅", "카피", "인스타", "링크드인", "뉴스레터", "바이럴", "트렌드"]
+    direct_channel: ""
+    report_channel: ""
+    persona: "{{SPIDERMAN_PERSONA}}"
+
+  thor:
+    path: "{{BASE_PATH}}\\thor"
+    emoji: "{{THOR_EMOJI}}"
+    description: "Sales / BizDev — sales scripts, cold emails, partnership proposals, negotiation strategy, CRM, sales pitches."
+    keywords: ["thor", "영업", "bizdev", "세일즈", "파트너십", "제안서", "협상", "crm", "피치", "딜"]
+    direct_channel: ""
+    report_channel: ""
+    persona: "{{THOR_PERSONA}}"
+
 slack:
   control_channel: "{{SLACK_CONTROL_CHANNEL}}"
   results_channel: "{{SLACK_RESULTS_CHANNEL}}"

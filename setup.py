@@ -222,6 +222,34 @@ AGENT_DEFAULTS = {
         "catchphrase": "I don't believe in coincidences. Every number tells a story.",
         "persona_full": "Nick Fury. Strategic director. Cold logic, no emotions. Numbers and strategy are his weapons.",
     },
+    "rogers": {
+        "emoji": "🛡️",
+        "name": "Steve Rogers",
+        "repo": "rogers",
+        "catchphrase": "I can do this all day.",
+        "persona_full": "Steve Rogers / Captain America. Principled, structured, team-first. Clear, direct communicator who keeps everyone aligned.",
+    },
+    "blackwidow": {
+        "emoji": "🕸️",
+        "name": "Black Widow",
+        "repo": "blackwidow",
+        "catchphrase": "I've got red in my ledger. Let me clear it.",
+        "persona_full": "Natasha Romanoff / Black Widow. Sharp, analytical, direct. Cuts through noise to find what users actually need.",
+    },
+    "spiderman": {
+        "emoji": "🕷️",
+        "name": "Spider-Man",
+        "repo": "spiderman",
+        "catchphrase": "With great power comes great content.",
+        "persona_full": "Peter Parker / Spider-Man. High-energy, Gen-Z sensibility, fast execution. Viral instincts and trend awareness.",
+    },
+    "thor": {
+        "emoji": "⚡",
+        "name": "Thor",
+        "repo": "thor",
+        "catchphrase": "Another deal for the worthy!",
+        "persona_full": "Thor Odinson. Grand, persuasive, supremely confident. Commands attention and closes deals with sweeping conviction.",
+    },
 }
 
 
@@ -314,7 +342,8 @@ AUTHORIZED_USER_ID={creds.get('AUTHORIZED_USER_ID', '')}
     print(green("  ✓ .mcp.json created"))
 
     # Create agent directories and CLAUDE.md files
-    agent_dirs = ["friday", "hulk", "hawkeye", "tonystark", "strange", "pepper", "nickfury"]
+    agent_dirs = ["friday", "hulk", "hawkeye", "tonystark", "strange", "pepper", "nickfury",
+                  "rogers", "blackwidow", "spiderman", "thor"]
     for agent_id in agent_dirs:
         if agent_id == "friday":
             agent_path = BASE_DIR  # Friday lives in root
@@ -356,12 +385,16 @@ def print_next_steps(sys_cfg: dict, personas: dict) -> None:
 
 1. {bold('Create GitHub repos for each agent:')}
    gh repo create {github_user}/{friday_repo} --public
-   gh repo create {github_user}/hulk --public
-   gh repo create {github_user}/hawkeye --public
-   gh repo create {github_user}/tonystark --public
-   gh repo create {github_user}/strange --public
-   gh repo create {github_user}/pepper --public
-   gh repo create {github_user}/nickfury --public
+   gh repo create {github_user}/{personas.get('hulk', {}).get('repo', 'hulk')} --public
+   gh repo create {github_user}/{personas.get('hawkeye', {}).get('repo', 'hawkeye')} --public
+   gh repo create {github_user}/{personas.get('tonystark', {}).get('repo', 'tonystark')} --public
+   gh repo create {github_user}/{personas.get('strange', {}).get('repo', 'strange')} --public
+   gh repo create {github_user}/{personas.get('pepper', {}).get('repo', 'pepper')} --public
+   gh repo create {github_user}/{personas.get('nickfury', {}).get('repo', 'nickfury')} --public
+   gh repo create {github_user}/{personas.get('rogers', {}).get('repo', 'rogers')} --public
+   gh repo create {github_user}/{personas.get('blackwidow', {}).get('repo', 'blackwidow')} --public
+   gh repo create {github_user}/{personas.get('spiderman', {}).get('repo', 'spiderman')} --public
+   gh repo create {github_user}/{personas.get('thor', {}).get('repo', 'thor')} --public
 
 2. {bold('Initialize git in each agent directory:')}
    cd {BASE_DIR}
