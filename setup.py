@@ -361,6 +361,51 @@ AUTHORIZED_USER_ID={creds.get('AUTHORIZED_USER_ID', '')}
 
     print(green("\n  All configuration files generated!"))
 
+    # Git remote setup — detach from redskio/agent-system
+    _setup_git_remote(github_user, personas)
+
+
+def _setup_git_remote(github_user: str, personas: dict) -> None:
+    """Ask user for their own remote URL and replace origin."""
+    friday_repo = personas.get("friday", {}).get("repo", "friday")
+    default_url = f"https://github.com/{github_user}/{friday_repo}.git"
+
+    print(f"\n{bold(cyan('─' * 50))}")
+    print(f"  {bold('Git Remote Setup')}")
+    print(f"{bold(cyan('─' * 50))}")
+    print("  This repo currently points to redskio/agent-system.")
+    print("  Enter your own remote URL so your changes stay in your repo.\n")
+
+    remote_url = ask("Your git remote URL", default_url)
+    if not remote_url:
+        print(yellow("  ⚠ Skipped — origin still points to redskio/agent-system."))
+        print(yellow("    Run manually: git remote set-url origin <your-url>"))
+        return
+
+    # Rename existing origin → upstream (so you can still pull updates from agent-system)
+    r1 = subprocess.run(
+        ["git", "remote", "rename", "origin", "upstream"],
+        capture_output=True, text=True, cwd=str(BASE_DIR),
+    )
+    if r1.returncode != 0 and "already exists" not in r1.stderr:
+        print(yellow(f"  ⚠ Could not rename origin: {r1.stderr.strip()}"))
+
+    # Set user's own remote as origin
+    r2 = subprocess.run(
+        ["git", "remote", "add", "origin", remote_url],
+        capture_output=True, text=True, cwd=str(BASE_DIR),
+    )
+    if r2.returncode == 0:
+        print(green(f"  ✓ origin → {remote_url}"))
+        print(green(f"  ✓ upstream → redskio/agent-system (for future updates)"))
+    else:
+        # Fallback: just set-url if add failed (e.g. origin already exists)
+        subprocess.run(
+            ["git", "remote", "set-url", "origin", remote_url],
+            capture_output=True, cwd=str(BASE_DIR),
+        )
+        print(green(f"  ✓ origin updated → {remote_url}"))
+
 
 def install_dependencies() -> None:
     print(f"\n{cyan('Installing Python dependencies...')}")
