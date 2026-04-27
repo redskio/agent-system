@@ -1,0 +1,12 @@
+.env
+.claude_session.json
+*.log
+logs/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+uploads/
+*.db
+*.sqlite
+node_modules/

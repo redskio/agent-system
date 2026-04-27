@@ -1,0 +1,39 @@
+# Agent System MCP Central Registry
+# All agents reference this file for credentials
+
+notion:
+  api_token: "{{NOTION_API_TOKEN}}"
+  api_base: "https://api.notion.com/v1"
+  api_version: "2022-06-28"
+  pages:
+    hub:       "{{NOTION_HUB_PAGE_ID}}"
+    hulk:      "{{NOTION_HUB_PAGE_ID}}"
+    pepper:    "{{NOTION_HUB_PAGE_ID}}"
+    strange:   "{{NOTION_HUB_PAGE_ID}}"
+    hawkeye:   "{{NOTION_HUB_PAGE_ID}}"
+    tonystark: "{{NOTION_HUB_PAGE_ID}}"
+
+unsplash:
+  access_key: "{{UNSPLASH_ACCESS_KEY}}"
+  api_base: "https://api.unsplash.com"
+
+gemini:
+  api_key: "{{GEMINI_API_KEY}}"
+  image_model: "imagen-3.0-generate-002"
+  mcp_server: "gemini-imagen"
+
+google_drive:
+  credentials_path: "{{GDRIVE_CREDENTIALS_PATH}}"
+  oauth_keys_path:  "{{GDRIVE_OAUTH_KEYS_PATH}}"
+  mcp_package:      "@modelcontextprotocol/server-gdrive@2025.1.14"
+  folders:
+    lectures: "AgentSystem/lectures"
+    design:   "AgentSystem/design"
+    research: "AgentSystem/research"
+    dev:      "AgentSystem/dev"
+    analysis: "AgentSystem/analysis"
+
+rules:
+  tool_priority: "MCP server first, then Python direct API"
+  never: "Do not use raw requests/httpx when MCP is available"
+  credentials: "All keys managed here only. Never inline in CLAUDE.md"

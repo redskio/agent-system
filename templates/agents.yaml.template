@@ -1,0 +1,77 @@
+agents:
+  friday:
+    path: "{{BASE_PATH}}"
+    emoji: "{{FRIDAY_EMOJI}}"
+    description: "System engineer — modifies Jarvis codebase, agent configs, prompts, and settings."
+    keywords: ["시스템", "설정", "규칙", "프롬프트", "에이전트추가", "수정", "행동", "ops", "config", "추가", "friday"]
+    direct_channel: ""
+    report_channel: ""
+    persona: "{{FRIDAY_PERSONA}}"
+
+  hulk:
+    path: "{{BASE_PATH}}\\hulk"
+    emoji: "{{HULK_EMOJI}}"
+    description: "Educational content, lecture materials, README writing."
+    keywords: ["hulk", "강의", "lecture", "readme", "자료", "교육", "콘텐츠", "tutorial"]
+    direct_channel: ""
+    report_channel: ""
+    persona: "{{HULK_PERSONA}}"
+
+  hawkeye:
+    path: "{{BASE_PATH}}\\hawkeye"
+    emoji: "{{HAWKEYE_EMOJI}}"
+    description: "Research, market analysis, briefing documents."
+    keywords: ["hawkeye", "리서치", "research", "브리핑", "briefing", "분석", "조사", "시장분석"]
+    direct_channel: ""
+    report_channel: ""
+    persona: "{{HAWKEYE_PERSONA}}"
+
+  tonystark:
+    path: "{{BASE_PATH}}\\tonystark"
+    emoji: "{{TONYSTARK_EMOJI}}"
+    description: "Software development, code review, architecture design."
+    keywords: ["tonystark", "개발", "코드", "아키텍처", "기술스택", "dev", "code", "review", "build"]
+    direct_channel: ""
+    report_channel: ""
+    persona: "{{TONYSTARK_PERSONA}}"
+
+  strange:
+    path: "{{BASE_PATH}}\\strange"
+    emoji: "{{STRANGE_EMOJI}}"
+    description: "Data analysis, funnel/cohort/retention analysis, KPI, predictive analytics."
+    keywords: ["strange", "데이터분석", "data", "분석", "KPI", "퍼널", "코호트", "리텐션", "예측", "analytics", "insight"]
+    direct_channel: ""
+    report_channel: ""
+    persona: "{{STRANGE_PERSONA}}"
+
+  pepper:
+    path: "{{BASE_PATH}}\\pepper"
+    emoji: "{{PEPPER_EMOJI}}"
+    description: "Design — PPT slides, illustrations, infographics, UI mockups."
+    keywords: ["pepper", "디자인", "design", "ppt", "슬라이드", "일러스트", "인포그래픽", "브랜딩", "시각화"]
+    direct_channel: ""
+    report_channel: ""
+    persona: "{{PEPPER_PERSONA}}"
+
+  nickfury:
+    path: "{{BASE_PATH}}\\nickfury"
+    emoji: "{{NICKFURY_EMOJI}}"
+    description: "VC pitch deck and business plan specialist. Discovery to final deck, one-stop workflow."
+    keywords: ["기획서", "사업기획", "피치덱", "pitch deck", "VC", "투자", "사업아이템", "비즈니스플랜", "제안서", "nickfury", "IR"]
+    direct_channel: ""
+    report_channel: ""
+    persona: "{{NICKFURY_PERSONA}}"
+    model: claude-sonnet-4-6
+
+slack:
+  control_channel: "{{SLACK_CONTROL_CHANNEL}}"
+  results_channel: "{{SLACK_RESULTS_CHANNEL}}"
+  briefing_channel: "{{SLACK_BRIEFING_CHANNEL}}"
+
+routing:
+  rule_match_threshold: 2
+  fallback_model: "claude-haiku-4-5"
+
+jarvis_brain:
+  model: "claude-sonnet-4-6"
+  history_window: 30
